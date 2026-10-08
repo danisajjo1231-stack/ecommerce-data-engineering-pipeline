@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Environment / Secrets
+.env
+.env.*
+!.env.example
+
+# VS Code
+.vscode/
+
+# Data files
+*.csv
+*.xlsx
+*.xls
+*.json
+
+# Power BI temporary/backup files
+*.pbit
+*.tmp
+*.bak
+
+# Python logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Output / temporary files
+temp/
+tmp/
