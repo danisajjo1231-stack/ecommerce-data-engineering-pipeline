@@ -1,75 +1,74 @@
-USE ECommerceDW;
+```sql
+USE [ECommerceDW];
+GO
+
+SET ANSI_NULLS ON;
+GO
+
+SET QUOTED_IDENTIFIER ON;
 GO
 
 -- =========================================
--- DIMENSION: CUSTOMER
+-- DIMENSION TABLE: CUSTOMER
 -- =========================================
 
 CREATE TABLE warehouse.DimCustomer
 (
-    Customer_Key INT IDENTITY(1,1) PRIMARY KEY,
+    Customer_Key INT IDENTITY(1,1) NOT NULL,
     Customer_ID INT NOT NULL,
-    Name VARCHAR(100),
-    City VARCHAR(100),
-    Gender VARCHAR(20),
-    Email VARCHAR(150),
-    Signup_Date DATE,
-    Modified_Date DATETIME2
+    Name VARCHAR(100) NULL,
+    City VARCHAR(100) NULL,
+    Gender VARCHAR(20) NULL,
+    Email VARCHAR(150) NULL,
+    Signup_Date DATE NULL,
+    Modified_Date DATETIME2(7) NULL,
+
+    CONSTRAINT PK_DimCustomer
+        PRIMARY KEY (Customer_Key)
 );
 GO
 
 
 -- =========================================
--- DIMENSION: PRODUCT
+-- DIMENSION TABLE: PRODUCT
 -- =========================================
 
 CREATE TABLE warehouse.DimProduct
 (
-    Product_Key INT IDENTITY(1,1) PRIMARY KEY,
+    Product_Key INT IDENTITY(1,1) NOT NULL,
     Product_ID INT NOT NULL,
-    Product_Name VARCHAR(200),
-    Category VARCHAR(100),
-    Price DECIMAL(18,2),
-    Subcategory INT,
-    Modified_Date DATETIME2
+    Product_Name VARCHAR(200) NULL,
+    Category VARCHAR(100) NULL,
+    Price DECIMAL(18,2) NULL,
+    Modified_Date DATETIME2(7) NULL,
+    Subcategory VARCHAR(100) NULL,
+
+    CONSTRAINT PK_DimProduct
+        PRIMARY KEY (Product_Key)
 );
 GO
 
 
 -- =========================================
--- DIMENSION: DATE
+-- DIMENSION TABLE: DATE
 -- =========================================
 
 CREATE TABLE warehouse.DimDate
 (
-    Date_Key INT PRIMARY KEY,
+    Date_Key INT NOT NULL,
     Full_Date DATE NOT NULL,
-    Year INT,
-    Quarter INT,
-    Month INT,
-    Month_Name VARCHAR(20),
-    Day INT,
-    Day_Name VARCHAR(20)
+    Year INT NULL,
+    Quarter INT NULL,
+    Month INT NULL,
+    Month_Name VARCHAR(20) NULL,
+    Day INT NULL,
+    Day_Name VARCHAR(20) NULL,
+
+    CONSTRAINT PK_DimDate
+        PRIMARY KEY (Date_Key)
 );
 GO
 
 
--- =========================================
--- FACT: ORDERS
--- =========================================
-
-CREATE TABLE warehouse.FactOrders
-(
-    Order_Key BIGINT IDENTITY(1,1) PRIMARY KEY,
-    Order_ID INT NOT NULL,
-    Customer_Key INT,
-    Product_Key INT,
-    Date_Key INT,
-    Payment_ID INT,
-    Quantity INT,
-    Unit_Price DECIMAL(18,2),
-    Total_Amount DECIMAL(18,2),
-    City VARCHAR(100),
-    Modified_Date DATETIME2
-);
-GO
+-- ==============
+```
