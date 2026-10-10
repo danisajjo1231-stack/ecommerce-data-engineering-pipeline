@@ -41,3 +41,6 @@ Thumbs.db
 # Output / temporary files
 temp/
 tmp/
+# Generated pipeline outputs
+output/
+d
